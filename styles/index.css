@@ -1,3 +1,21 @@
+:root {
+  --bg-start: #0f0c29;
+  --bg-mid: #302b63;
+  --bg-end: #24243e;
+  --primary: #7c5cfc;
+  --secondary: #b06ab3;
+  --text-color: #fff;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --input-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --placeholder-color: rgba(255, 255, 255, 0.4);
+  --note-color: rgba(255, 255, 255, 0.08);
+  --clear-border: rgba(255, 255, 255, 0.25);
+  --clear-hover-bg: rgba(255, 255, 255, 0.08);
+  --clear-hover-border: rgba(255, 255, 255, 0.4);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +28,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
   background-size: 400% 400%;
   animation: gradientShift 10s ease infinite;
   overflow: hidden;
@@ -33,7 +51,7 @@ body {
 .note {
   position: absolute;
   bottom: -60px;
-  color: rgba(255, 255, 255, 0.08);
+  color: var(--note-color);
   animation: floatUp 12s linear infinite;
 }
 
@@ -81,36 +99,36 @@ body {
 .form {
   display: flex;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
   padding: 16px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
 }
 
 input[type="url"] {
   flex: 1;
   padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--input-border);
   border-radius: 8px;
   font-size: 16px;
   outline: none;
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
+  background: var(--input-bg);
+  color: var(--text-color);
 }
 
 input[type="url"]::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--placeholder-color);
 }
 
 input[type="url"]:focus {
-  border-color: #7c5cfc;
+  border-color: var(--primary);
 }
 
 button {
   padding: 12px 28px;
-  background: linear-gradient(135deg, #7c5cfc, #b06ab3);
-  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--text-color);
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -120,15 +138,15 @@ button {
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(124, 92, 252, 0.4);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 #clearBtn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--clear-border);
 }
 
 #clearBtn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: var(--clear-hover-bg);
+  border-color: var(--clear-hover-border);
 }
