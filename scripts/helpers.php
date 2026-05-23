@@ -33,6 +33,7 @@ function fetchUrl(string $url): string {
         CURLOPT_COOKIEFILE     => COOKIE_FILE,
         CURLOPT_ENCODING       => '',
         CURLOPT_SSL_VERIFYPEER => true,
+        CURLOPT_CAINFO         => 'C:/php/cacert.pem',
     ]);
 
     $html    = curl_exec($ch);
