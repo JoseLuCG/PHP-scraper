@@ -21,11 +21,11 @@
     <span class="note">♩</span>
   </div>
   <div class="container">
-    <div class="form">
-      <input type="url" id="linkInput" placeholder="Paste your link here..." required>
-      <button id="submitBtn">Submit</button>
-      <button id="clearBtn">Limpiar</button>
-    </div>
+    <form id="linkForm" action="scripts/index.php" method="POST">
+      <input type="url" name="link" id="linkInput" placeholder="Paste your link here..." required>
+      <button type="submit" id="submitBtn">Submit</button>
+      <button type="button" id="clearBtn">Limpiar</button>
+    </form>
   </div>
 </body>
 </html>
