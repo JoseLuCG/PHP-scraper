@@ -92,10 +92,6 @@ body {
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.container.shift-up {
-  transform: translateY(-40vh);
-}
-
 form {
   display: flex;
   gap: 10px;
@@ -149,4 +145,53 @@ button:hover {
 #clearBtn:hover {
   background: var(--clear-hover-bg);
   border-color: var(--clear-hover-border);
+}
+
+/* ─── Waiting Template ──────────────────────────────────── */
+
+#results {
+  margin-top: 20px;
+}
+
+.waiting-template {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  color: var(--text-color);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.waiting-template p {
+  font-size: 15px;
+  opacity: 0.7;
+}
+
+/* ─── Results Page Overrides ─────────────────────────────── */
+
+body.results-active {
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+body.results-active .container {
+  margin-top: 2rem;
 }
