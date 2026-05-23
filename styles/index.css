@@ -37,6 +37,17 @@ body {
   animation: floatUp 12s linear infinite;
 }
 
+.note:nth-child(1) { left: 5%; animation-delay: 0s; font-size: 28px; }
+.note:nth-child(2) { left: 15%; animation-delay: 2s; font-size: 36px; }
+.note:nth-child(3) { left: 25%; animation-delay: 4s; font-size: 24px; }
+.note:nth-child(4) { left: 35%; animation-delay: 1s; font-size: 40px; }
+.note:nth-child(5) { left: 45%; animation-delay: 5s; font-size: 30px; }
+.note:nth-child(6) { left: 55%; animation-delay: 3s; font-size: 22px; }
+.note:nth-child(7) { left: 65%; animation-delay: 6s; font-size: 34px; }
+.note:nth-child(8) { left: 75%; animation-delay: 2.5s; font-size: 26px; }
+.note:nth-child(9) { left: 85%; animation-delay: 4.5s; font-size: 38px; }
+.note:nth-child(10) { left: 92%; animation-delay: 3.5s; font-size: 20px; }
+
 @keyframes floatUp {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -60,6 +71,11 @@ body {
   padding: 0 20px;
   position: relative;
   z-index: 1;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.container.shift-up {
+  transform: translateY(-40vh);
 }
 
 .form {
@@ -105,4 +121,14 @@ button {
 button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(124, 92, 252, 0.4);
+}
+
+#clearBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+#clearBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
 }
