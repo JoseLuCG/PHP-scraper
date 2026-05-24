@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/index.css">
   <link rel="stylesheet" href="styles/results.css">
   <script defer src="templates/waiting-template.js"></script>
+  <script defer src="scripts/javascript/services.js"></script>
   <script defer src="scripts/javascript/index.js"></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
     <span class="note">♩</span>
   </div>
   <div class="container">
-    <form id="linkForm" action="scripts/index.php" method="POST">
+    <form id="linkForm" action="scripts/php/index.php" method="POST">
       <input type="url" name="link" id="linkInput" placeholder="Paste your link here..." required>
       <button type="submit" id="submitBtn">Submit</button>
       <button type="reset" id="clearBtn">Limpiar</button>
