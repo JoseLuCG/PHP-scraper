@@ -1,13 +1,15 @@
-document.getElementById('linkForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+const container = document.querySelector('.container');
+const resultsEl = document.getElementById('results');
+const linkInput = document.getElementById('linkInput');
+const linkForm = document.getElementById('linkForm');
 
-  const resultsEl = document.getElementById('results');
-  const container = document.querySelector('.container');
+linkForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   container.classList.add('shift-up');
 
   resultsEl.innerHTML = `
-    <div class="waiting-template">
+    <div class="waiting-template glass">
       <div class="spinner"></div>
       <p>Fetching ticket listings...</p>
     </div>
@@ -16,11 +18,12 @@ document.getElementById('linkForm').addEventListener('submit', async (e) => {
   const formData = new FormData(e.target);
 
   try {
-    const res = await fetch('scripts/index.php', { method: 'POST', body: formData });
+    const res = await fetch('scripts/index.php', {
+      method: 'POST',
+      body: formData,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    });
     const html = await res.text();
-
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    const resultsContent = doc.querySelector('.results-container');
 
     container.style.transition = 'none';
     container.classList.remove('shift-up');
@@ -28,11 +31,10 @@ document.getElementById('linkForm').addEventListener('submit', async (e) => {
     document.body.classList.add('results-active');
     container.style.transition = '';
 
-    if (resultsContent) {
-      resultsEl.innerHTML = resultsContent.outerHTML;
+    if (res.ok) {
+      resultsEl.innerHTML = html;
     } else {
-      const errorText = doc.body.textContent.trim();
-      resultsEl.innerHTML = `<p style="color:#f88;text-align:center;padding:2rem;">${errorText || 'No results found.'}</p>`;
+      resultsEl.innerHTML = `<p style="color:#f88;text-align:center;padding:2rem;">${html || 'No results found.'}</p>`;
     }
   } catch (err) {
     resultsEl.innerHTML = `<p style="color:#f88;text-align:center;padding:2rem;">Error: ${err.message}</p>`;
@@ -40,8 +42,8 @@ document.getElementById('linkForm').addEventListener('submit', async (e) => {
 });
 
 document.getElementById('clearBtn').addEventListener('click', () => {
-  document.querySelector('.container').classList.remove('shift-up');
-  document.getElementById('linkInput').value = '';
-  document.getElementById('results').innerHTML = '';
+  container.classList.remove('shift-up');
+  linkInput.value = '';
+  resultsEl.innerHTML = '';
   document.body.classList.remove('results-active');
 });

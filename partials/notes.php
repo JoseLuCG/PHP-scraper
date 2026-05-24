@@ -1,0 +1,10 @@
+<span class="note">♩</span>
+<span class="note">♪</span>
+<span class="note">♫</span>
+<span class="note">♬</span>
+<span class="note">♪</span>
+<span class="note">♩</span>
+<span class="note">♫</span>
+<span class="note">♪</span>
+<span class="note">♬</span>
+<span class="note">♩</span>

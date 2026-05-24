@@ -157,6 +157,13 @@ button:hover {
   margin-top: 20px;
 }
 
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
 .waiting-template {
   display: flex;
   flex-direction: column;
@@ -164,10 +171,6 @@ button:hover {
   justify-content: center;
   gap: 20px;
   padding: 60px 20px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
   color: var(--text-color);
 }
 

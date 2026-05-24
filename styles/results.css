@@ -7,10 +7,6 @@
 }
 
 .event-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
     padding: 24px 32px;
     margin-bottom: 24px;
 }
@@ -61,10 +57,10 @@
 
 .table-wrap {
     overflow-x: auto;
-    border-radius: 12px;
-    border: 1px solid var(--glass-border);
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
 }
 
 table {
