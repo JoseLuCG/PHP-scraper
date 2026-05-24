@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use HeadlessChromium\BrowserFactory;
 use HeadlessChromium\Page;
@@ -94,6 +94,6 @@ class VividSeatsScraper
     }
 
     private function getExtractionScript(): string {
-        return file_get_contents(__DIR__ . '/extract-listings.js');
+        return file_get_contents(__DIR__ . '/../javascript/extract-listings.js');
     }
 }

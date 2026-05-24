@@ -15,7 +15,7 @@ $event = $result['event'];
 $listings = $result['listings'];
 
 if ($isAjax) {
-  require __DIR__ . '/../templates/results.php';
+  require __DIR__ . '/../../templates/results.php';
   exit;
 }
 
@@ -27,16 +27,16 @@ if ($isAjax) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= htmlspecialchars($event['name']) ?> — Tickets</title>
-  <link rel="stylesheet" href="../styles/index.css">
-  <link rel="stylesheet" href="../styles/results.css">
+  <link rel="stylesheet" href="../../styles/index.css">
+  <link rel="stylesheet" href="../../styles/results.css">
 </head>
 
 <body>
   <div class="bg-notes">
-    <?php require __DIR__ . '/../partials/notes.php'; ?>
+    <?php require __DIR__ . '/../../partials/notes.php'; ?>
   </div>
 
-  <?php require __DIR__ . '/../templates/results.php'; ?>
+  <?php require __DIR__ . '/../../templates/results.php'; ?>
 </body>
 
 </html>

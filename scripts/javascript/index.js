@@ -8,17 +8,12 @@ linkForm.addEventListener('submit', async (e) => {
 
   container.classList.add('shift-up');
 
-  resultsEl.innerHTML = `
-    <div class="waiting-template glass">
-      <div class="spinner"></div>
-      <p>Fetching ticket listings...</p>
-    </div>
-  `;
+  resultsEl.innerHTML = WAITING_TEMPLATE;
 
   const formData = new FormData(e.target);
 
   try {
-    const res = await fetch('scripts/index.php', {
+    const res = await fetch('scripts/php/index.php', {
       method: 'POST',
       body: formData,
       headers: { 'X-Requested-With': 'XMLHttpRequest' },
