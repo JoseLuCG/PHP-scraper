@@ -53,8 +53,7 @@ function fetchUrl(string $url): string {
     return $html;
 }
 
-function validateVividSeatsUrl(string $url): bool
-{
+function validateVividSeatsUrl(string $url): bool {
     $host = parse_url($url, PHP_URL_HOST);
     return $host !== null && str_contains($host, 'vividseats.com');
 }
