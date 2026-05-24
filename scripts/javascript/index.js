@@ -13,11 +13,7 @@ linkForm.addEventListener('submit', async (e) => {
   const formData = new FormData(e.target);
 
   try {
-    const res = await fetch('scripts/php/index.php', {
-      method: 'POST',
-      body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-    });
+    const res = await fetchToBackend(formData);
     const html = await res.text();
 
     container.style.transition = 'none';
