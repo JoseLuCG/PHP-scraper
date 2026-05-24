@@ -25,10 +25,10 @@ linkForm.addEventListener('submit', async (e) => {
     if (res.ok) {
       resultsEl.innerHTML = html;
     } else {
-      resultsEl.innerHTML = `<p style="color:#f88;text-align:center;padding:2rem;">${html || 'No results found.'}</p>`;
+      resultsEl.innerHTML = errorMsg(html || 'No results found.');
     }
   } catch (err) {
-    resultsEl.innerHTML = `<p style="color:#f88;text-align:center;padding:2rem;">Error: ${err.message}</p>`;
+    resultsEl.innerHTML = errorMsg('Error: ' + err.message);
   }
 });
 
