@@ -1,43 +1,15 @@
 <?php
 
-require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/validators.php';
 require_once __DIR__ . '/scraper.php';
 
 $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_POST['link'])) {
-  $msg = 'No link provided.';
-  if ($isAjax) { echo $msg; exit; }
-  echo '<p style="color:#fff;text-align:center;padding:2rem;">' . $msg . '</p>';
-  exit;
-}
-
-$url = filter_var($_POST['link'], FILTER_VALIDATE_URL);
-
-if ($url === false) {
-  $msg = 'Invalid URL format.';
-  if ($isAjax) { echo $msg; exit; }
-  echo '<p style="color:#fff;text-align:center;padding:2rem;">' . $msg . '</p>';
-  exit;
-}
-
-if (!validateVividSeatsUrl($url)) {
-  $msg = 'Please provide a valid VividSeats URL.';
-  if ($isAjax) { echo $msg; exit; }
-  echo '<p style="color:#fff;text-align:center;padding:2rem;">' . $msg . '</p>';
-  exit;
-}
+$url = validateRequest($isAjax);
 
 $scraper = new VividSeatsScraper($url);
-$result = $scraper->scrape();
-
-if (!$result['success']) {
-  $msg = 'Error: ' . htmlspecialchars($result['error'] ?? 'Unknown error');
-  if ($isAjax) { echo $msg; exit; }
-  echo '<p style="color:#f88;text-align:center;padding:2rem;">' . $msg . '</p>';
-  exit;
-}
+$result = validateScrapeResult($scraper->scrape(), $isAjax);
 
 $event = $result['event'];
 $listings = $result['listings'];
